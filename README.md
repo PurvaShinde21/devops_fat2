@@ -39,11 +39,29 @@ nano Dockerfile
 ```dockerfile
 FROM alpine:latest
 
-# Update package list and install basic Linux utilities
-RUN apk update && apk add bash curl wget nano
+# Install basic Linux tools
+RUN apk update && apk add bash curl wget nano tree coreutils
 
-# Default command to keep container running
+# Create lab directory and set it as working directory
+RUN mkdir /lab
+WORKDIR /lab
+
+# Create sample files inside /lab
+RUN echo "first file content" > fileA.txt && \
+    echo "second file content" > fileB.txt
+
+# Demonstrate basic Linux commands
+RUN pwd
+RUN head -n 1 fileA.txt
+RUN tail -n 1 fileB.txt
+RUN mv fileA.txt renamed_file.txt
+RUN chmod 644 renamed_file.txt
+RUN uname -a
+RUN hostname
+
+# Keep container interactive
 CMD ["bash"]
+
 ```
 
 ### Step 3: Build Docker Image
@@ -105,4 +123,6 @@ git push -u origin main
 - **Docker Skills:**  
   Built and ran Docker images, installed packages inside containers, tested commands, and understood the container lifecycle.
 
-**Overall:** This assignment integrates **DevOps principles with Linux, Git, and Docker** to simulate a real-world development and deployment workflow, giving hands-on exposure to these essential tools and practices.
+---
+## Dockerhub link 
+https://hub.docker.com/repository/docker/purvashinde21/basic-linux/general
