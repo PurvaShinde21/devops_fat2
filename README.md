@@ -125,4 +125,4 @@ git push -u origin main
 
 ---
 ## Dockerhub link 
-https://hub.docker.com/repository/docker/purvashinde21/basic-linux/general
+https://hub.docker.com/r/purvashinde21/basic-linux
